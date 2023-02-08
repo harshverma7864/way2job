@@ -5,14 +5,12 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.example.way2job.CardsInfo;
 import com.example.way2job.R;
 import com.example.way2job.models.Information;
@@ -46,12 +44,23 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
         holder.ctc.setText(informationList.get(position).getCtc().toString());
         holder.companyName.setText(informationList.get(position).getCompanyName());
         holder.roleOffered.setText(informationList.get(position).getRoleOffered());
-         int cardId = informationList.get(position).getId();
+        int id = position;
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, CardsInfo.class);
-                intent.putExtra("cardId", cardId);
+                intent.putExtra("cardId", String.valueOf(informationList.get(id).getId()));
+                intent.putExtra("collegeName",informationList.get(id).getCollegeName() );
+                intent.putExtra("companyName", informationList.get(id).getCompanyName());
+                intent.putExtra("companytype", informationList.get(id).getCompanytype());
+                intent.putExtra("roleOffered", informationList.get(id).getRoleOffered());
+                intent.putExtra("ctc", String.valueOf(informationList.get(id).getCtc()));
+                intent.putExtra("yearOfVisit", informationList.get(id).getYearOfVisit());
+                intent.putExtra("logo", informationList.get(id).getLogo());
+                intent.putExtra("noOfRounds",String.valueOf(informationList.get(id).getNoOfRounds()));
+                intent.putExtra("techStack", informationList.get(id).getTechStack());
+                intent.putExtra("location", informationList.get(id).getLocation());
+                intent.putExtra("drivetype", informationList.get(id).getDriveType());
                 context.startActivity(intent);
             }
         });

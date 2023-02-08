@@ -12,8 +12,9 @@ public class Information {
     private int noOfRounds;
     private String techStack;
     private String location;
+    private String driveType;
 
-    public Information(String roleOffered,int id ,String collegeName, String companyName, String companytype, Double ctc, int yearOfVisit, String logo, int noOfRounds, String techStack, String location) {
+    public Information(String roleOffered,int id ,String collegeName, String companyName, String companytype, Double ctc, int yearOfVisit, String logo, int noOfRounds, String techStack, String location, String driveType) {
         this.id = id;
         this.roleOffered = roleOffered;
         this.collegeName = collegeName;
@@ -25,6 +26,15 @@ public class Information {
         this.noOfRounds = noOfRounds;
         this.techStack = techStack;
         this.location = location;
+        this.driveType = driveType;
+    }
+
+    public String getDriveType() {
+        return driveType;
+    }
+
+    public void setDriveType(String driveType) {
+        this.driveType = driveType;
     }
 
     public String getRoleOffered() {
