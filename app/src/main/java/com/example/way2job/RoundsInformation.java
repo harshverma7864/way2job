@@ -81,7 +81,6 @@ public class RoundsInformation extends AppCompatActivity {
                         } catch (JSONException e) {
                             Toast.makeText(RoundsInformation.this, "Error Occured" + e, Toast.LENGTH_SHORT).show();
                         }
-
                     }
                 }, new Response.ErrorListener() {
             @Override
