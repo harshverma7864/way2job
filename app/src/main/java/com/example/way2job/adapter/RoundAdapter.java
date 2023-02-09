@@ -1,5 +1,6 @@
 package com.example.way2job.adapter;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.way2job.R;
+import com.example.way2job.RoundsInformation;
 import com.example.way2job.models.Rounds;
 import java.util.List;
 
@@ -32,6 +34,16 @@ public class RoundAdapter extends RecyclerView.Adapter<RoundAdapter.ViewHolder> 
     public void onBindViewHolder(@NonNull RoundAdapter.ViewHolder holder, int position) {
         holder.roundNo.setText(String.valueOf(roundInfoList.get(position).getId()));
         holder.roundType.setText(roundInfoList.get(position).getRoundName());
+        int ide = position;
+        holder.parentView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, RoundsInformation.class);
+                intent.putExtra("roundId" , String.valueOf(roundInfoList.get(ide).getId()));
+                context.startActivity(intent);
+            }
+        });
+
     }
 
     @Override
@@ -52,7 +64,7 @@ public class RoundAdapter extends RecyclerView.Adapter<RoundAdapter.ViewHolder> 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             this.parentView = itemView;
-//            this.cardView = itemView.findViewById(R.id.cardView);
+            this.cardView = itemView.findViewById(R.id.cardView);
             this.roundNo = itemView.findViewById(R.id.roundno);
             this.roundType = itemView.findViewById(R.id.roundtype);
         }

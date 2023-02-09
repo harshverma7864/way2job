@@ -4,10 +4,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
+import android.icu.text.IDNA;
 import android.os.Bundle;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.way2job.adapter.CardAdapter;
 import com.example.way2job.models.Information;
+import com.example.way2job.models.Rounds;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -25,28 +39,67 @@ public class CardsRecyclerView extends AppCompatActivity {
         setContentView(R.layout.activity_cards_recycler_view);
         recyclerView = findViewById(R.id.reccycler);
 
-        informationList.add(new Information("ASE", 1, "Axis Colleges", "Nucleus Software Exports Ltd."
-                , "Product Based", 4.33, 2022, "" , 4, "JAVA", "NOIDA", "OnCampus"));
+        Intent intent = getIntent();
+        if (intent.getStringExtra("card").equals("1")){
+            getCompanyInfo("1", intent.getStringExtra("year"));
+        }
+        else{
+            getCompanyInfo("2", intent.getStringExtra("companyType"));
 
-        informationList.add(new Information("ASE", 2, "PSIT", "Sopra Banking Software"
-                , "Product Based", 8.5, 2022, "" , 4, "JAVA", "NOIDA","OnCampus"));
-
-        informationList.add(new Information("ASE", 3, "Axis Colleges", "Vinove Softwares"
-                , "Service Based", 4.5, 2022, "" , 4, "JAVA", "LUCKNOW", "OnCampus"));
-
-        informationList.add(new Information("ASE", 4, "AKTU", "Zenarate"
-                , "Product Based", 7.5, 2022, "" , 4, "JAVA", "GURUGRAM","OnCampus"));
-
-        informationList.add(new Information("ASE", 5, "Axis Colleges", "Unify Cloud Solutions"
-                , "Service Based", 4.5, 2022, "" , 4, "JAVA", "NOIDA","OnCampus"));
-
-        informationList.add(new Information("ASE", 6, "Axis Colleges", "Nucleus Software Exports Ltd."
-                , "Product Based", 4.33, 2022, "" , 4, "JAVA", "NOIDA","OnCampus"));
-
-
+        }
 
         cardAdapter = new CardAdapter(this, informationList);
         recyclerView.setAdapter(cardAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
+
+    public void getCompanyInfo(String basis , String type) {
+        RequestQueue queue = Volley.newRequestQueue(this);
+
+        final String url = "https://way2job.shohos.com/way2jobApis/getAllCompanies.php?basis="+basis+"&type="+type;
+        informationList.clear();
+        JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, url, null,
+
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        try {
+                            JSONArray jsonArray = response.getJSONArray("data");
+                            for(int i=0;i<jsonArray.length();i++) {
+                                JSONObject jsonObject =  jsonArray.getJSONObject(i);
+                                String id = jsonObject.getString("id");
+                                String collegeName = jsonObject.getString("collegeName");
+                                String companyName = jsonObject.getString("companyName");
+                                String companytype = jsonObject.getString("companytype");
+                                String ctc = jsonObject.getString("ctc");
+                                String roleOffered = jsonObject.getString("roleOffered");
+                                String yearOfVisit = jsonObject.getString("yearOfVisit");
+                                String logo = jsonObject.getString("logo");
+                                String noOfRounds = jsonObject.getString("noOfRounds");
+                                String techStack = jsonObject.getString("techStack");
+                                String location = jsonObject.getString("location");
+                                String drivetype = jsonObject.getString("drivetype");
+                                information = new Information(roleOffered, Integer.parseInt(id), collegeName, companyName, companytype ,Double.parseDouble(ctc) , Integer.parseInt(yearOfVisit), logo, Integer.parseInt(noOfRounds), techStack,
+                                        location, drivetype);
+                                informationList.add(information);
+                                cardAdapter.notifyDataSetChanged();
+                            }
+
+                        } catch (JSONException e) {
+                            Toast.makeText(CardsRecyclerView.this, "Error Occured" + e, Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(CardsRecyclerView.this, "Volley Error Occured" + error, Toast.LENGTH_SHORT).show();
+            }
+        });
+        queue.add(getRequest);
+
+    }
+
+
 }

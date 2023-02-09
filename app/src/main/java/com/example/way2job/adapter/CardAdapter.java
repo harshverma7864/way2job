@@ -5,12 +5,14 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.way2job.CardsInfo;
 import com.example.way2job.R;
 import com.example.way2job.models.Information;
@@ -44,7 +46,9 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
         holder.ctc.setText(informationList.get(position).getCtc().toString());
         holder.companyName.setText(informationList.get(position).getCompanyName());
         holder.roleOffered.setText(informationList.get(position).getRoleOffered());
+        Glide.with(context).load(informationList.get(position).getLogo()).into(holder.logo);
         int id = position;
+
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,7 +83,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
 
         CardView cardView;
         View parentView;
-
+        ImageView logo;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -87,6 +91,7 @@ public class CardAdapter extends RecyclerView.Adapter<CardAdapter.ViewHolder> {
             super(itemView);
             this.parentView = itemView;
             this.cardView = itemView.findViewById(R.id.cardItem);
+            this.logo = itemView.findViewById(R.id.logo);
             this.companyName = itemView.findViewById(R.id.cname);
             this.companyType = itemView.findViewById(R.id.ctype);
             this.roleOffered = itemView.findViewById(R.id.role);

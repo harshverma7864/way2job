@@ -1,6 +1,7 @@
 package com.example.way2job;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -12,10 +13,12 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.way2job.fragments.HomeFragment;
@@ -23,12 +26,13 @@ import com.example.way2job.fragments.ProfileFragment;
 import com.example.way2job.fragments.SettingsFragment;
 import com.google.android.material.navigation.NavigationView;
 
+import java.time.LocalDate;
+
 public class MainActivity extends AppCompatActivity {
 Toolbar toolbar  ;
 NavigationView navigationView;
 DrawerLayout drawerLayout;
-CardView cardView;
-
+CardView lastYear, lastLastYear, lastLastLastYear, product, service, fintech, edtech;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +40,6 @@ CardView cardView;
         drawerLayout = findViewById(R.id.drawerLayout);
         navigationView = findViewById(R.id.navigationView);
         toolbar = findViewById(R.id.toolbar);
-        cardView = findViewById(R.id.cardLastYear);
         toolbar.setTitle("WAY 2 JOB");
         setSupportActionBar(toolbar);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,
@@ -46,15 +49,97 @@ CardView cardView;
 
         toggle.syncState();
 
+        lastYear = findViewById(R.id.cardLastYear);
+        lastLastYear = findViewById(R.id.cardLastLastYear);
+        lastLastLastYear = findViewById(R.id.lastLastLastYear);
+        product = findViewById(R.id.product);
+        service = findViewById(R.id.service);
+        fintech = findViewById(R.id.fintech);
+        edtech = findViewById(R.id.edtech);
 
-        cardView.setOnClickListener(new View.OnClickListener() {
+
+
+
+        lastYear.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, CardsRecyclerView.class);
+                intent.putExtra("card", "1");
+                int year = LocalDate.now().getYear() - 1;
+                intent.putExtra("year", String.valueOf(year));
                 startActivity(intent);
             }
         });
 
+        lastLastYear.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, CardsRecyclerView.class);
+                int year = LocalDate.now().getYear() - 2;
+                intent.putExtra("card", "1");
+                intent.putExtra("year", String.valueOf(year));
+                startActivity(intent);
+            }
+        });
+
+
+        lastLastLastYear.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, CardsRecyclerView.class);
+                intent.putExtra("card", "1");
+                int year = LocalDate.now().getYear() - 3;
+                intent.putExtra("year", String.valueOf(year));
+                startActivity(intent);
+            }
+        });
+
+        product.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, CardsRecyclerView.class);
+                intent.putExtra("card", "2");
+                intent.putExtra("companyType", "product");
+                startActivity(intent);
+            }
+        });
+
+
+        service.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, CardsRecyclerView.class);
+                intent.putExtra("card", "2");
+                intent.putExtra("companyType", "service");
+                startActivity(intent);
+            }
+        });
+
+
+        fintech.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, CardsRecyclerView.class);
+                intent.putExtra("card", "2");
+                intent.putExtra("companyType", "fintech");
+                startActivity(intent);
+            }
+        });
+
+
+
+        edtech.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, CardsRecyclerView.class);
+                intent.putExtra("card", "2");
+                intent.putExtra("companyType", "edtech");
+                startActivity(intent);
+            }
+        });
 
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {

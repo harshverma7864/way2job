@@ -85,7 +85,7 @@ public class CardsInfo extends AppCompatActivity {
     public void getRoundsInfo(int companyid) {
 
         RequestQueue queue = Volley.newRequestQueue(this);
-
+roundInfoList.clear();
         final String url = "https://way2job.shohos.com/way2jobApis/getRoundsInfo.php?companyId=" + companyid;
 
         JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, url, null,

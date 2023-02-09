@@ -29,99 +29,51 @@ public class Information {
         this.driveType = driveType;
     }
 
-    public String getDriveType() {
-        return driveType;
-    }
-
-    public void setDriveType(String driveType) {
-        this.driveType = driveType;
-    }
-
-    public String getRoleOffered() {
-        return roleOffered;
-    }
-
-    public void setRoleOffered(String roleOffered) {
-        this.roleOffered = roleOffered;
-    }
-
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getCollegeName() {
         return collegeName;
     }
 
-    public void setCollegeName(String collegeName) {
-        this.collegeName = collegeName;
-    }
-
     public String getCompanyName() {
         return companyName;
-    }
-
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
     }
 
     public String getCompanytype() {
         return companytype;
     }
 
-    public void setCompanytype(String companytype) {
-        this.companytype = companytype;
-    }
-
     public Double getCtc() {
         return ctc;
     }
 
-    public void setCtc(Double ctc) {
-        this.ctc = ctc;
+    public String getRoleOffered() {
+        return roleOffered;
     }
 
     public int getYearOfVisit() {
         return yearOfVisit;
     }
 
-    public void setYearOfVisit(int yearOfVisit) {
-        this.yearOfVisit = yearOfVisit;
-    }
-
     public String getLogo() {
         return logo;
-    }
-
-    public void setLogo(String logo) {
-        this.logo = logo;
     }
 
     public int getNoOfRounds() {
         return noOfRounds;
     }
 
-    public void setNoOfRounds(int noOfRounds) {
-        this.noOfRounds = noOfRounds;
-    }
-
     public String getTechStack() {
         return techStack;
     }
 
-    public void setTechStack(String techStack) {
-        this.techStack = techStack;
+    public String getLocation() {
+        return location;
+    }
+
+    public String getDriveType() {
+        return driveType;
     }
 }

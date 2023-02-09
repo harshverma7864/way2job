@@ -34,47 +34,23 @@ public class Rounds {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public int getCompanyId() {
         return companyId;
-    }
-
-    public void setCompanyId(int companyId) {
-        this.companyId = companyId;
     }
 
     public String getRoundName() {
         return roundName;
     }
 
-    public void setRoundName(String roundName) {
-        this.roundName = roundName;
-    }
-
     public String getRoundType() {
         return roundType;
-    }
-
-    public void setRoundType(String roundType) {
-        this.roundType = roundType;
     }
 
     public int getNoOfQuestions() {
         return noOfQuestions;
     }
 
-    public void setNoOfQuestions(int noOfQuestions) {
-        this.noOfQuestions = noOfQuestions;
-    }
-
     public int getDuration() {
         return duration;
-    }
-
-    public void setDuration(int duration) {
-        this.duration = duration;
     }
 }
