@@ -16,6 +16,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.way2job.adapter.CardAdapter;
+import com.example.way2job.adapter.ImageAdapter;
 import com.example.way2job.adapter.RoundAdapter;
 import com.example.way2job.models.Information;
 import com.example.way2job.models.Rounds;
@@ -25,13 +26,16 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class CardsInfo extends AppCompatActivity {
     Rounds roundsDataClass;
     RoundAdapter rAdapter;
-    RecyclerView recyclerView;
+    ImageAdapter imageAdapter;
+    RecyclerView recyclerView, imageRecycler;
     public static ArrayList<Rounds> roundInfoList = new ArrayList<>();
+    public static ArrayList<String> images = new ArrayList<>();
     TextView idText,companyNameText ,driveTypeText , roleOfferedText , ctcText , locationText , companyTypeText , colNameText ;
 
     @Override
@@ -42,6 +46,7 @@ public class CardsInfo extends AppCompatActivity {
 
 
         recyclerView = findViewById(R.id.rounds);
+        imageRecycler = findViewById(R.id.imageRecycler);
 
         driveTypeText = findViewById(R.id.driveType);
 
@@ -67,6 +72,7 @@ public class CardsInfo extends AppCompatActivity {
 
 
         getRoundsInfo(companyId);
+        getAllImages(companyId);
 
 
 
@@ -74,6 +80,13 @@ public class CardsInfo extends AppCompatActivity {
         recyclerView.setAdapter(rAdapter);
         LinearLayoutManager h = new LinearLayoutManager(CardsInfo.this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(h);
+
+
+
+        imageAdapter = new ImageAdapter(this, images);
+        imageRecycler.setAdapter(imageAdapter);
+        LinearLayoutManager h2 = new LinearLayoutManager(CardsInfo.this, LinearLayoutManager.HORIZONTAL, false);
+        imageRecycler.setLayoutManager(h2);
 
 
 
@@ -122,5 +135,41 @@ roundInfoList.clear();
         queue.add(getRequest);
 
     }
+
+    public void getAllImages(int companyid) {
+
+        RequestQueue queue = Volley.newRequestQueue(this);
+        images.clear();
+        final String url = "https://way2job.shohos.com/way2jobApis/getAllImages.php?cardId=card"+companyid;
+
+        JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        try {
+                            JSONArray jsonArray = response.getJSONArray("data");
+                            for(int i=0;i<jsonArray.length();i++) {
+                                JSONObject jsonObject =  jsonArray.getJSONObject(i);
+                                String imageUrl = jsonObject.getString("url");
+                                images.add(imageUrl);
+                                imageAdapter.notifyDataSetChanged();
+                            }
+
+                        } catch (JSONException e) {
+                            Toast.makeText(CardsInfo.this, "Error Occured" + e, Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(CardsInfo.this, "Volley Error Occured" + error, Toast.LENGTH_SHORT).show();
+            }
+        });
+        queue.add(getRequest);
+
+    }
+
 
 }

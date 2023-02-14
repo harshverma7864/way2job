@@ -57,9 +57,6 @@ CardView lastYear, lastLastYear, lastLastLastYear, product, service, fintech, ed
         fintech = findViewById(R.id.fintech);
         edtech = findViewById(R.id.edtech);
 
-
-
-
         lastYear.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
@@ -71,6 +68,7 @@ CardView lastYear, lastLastYear, lastLastLastYear, product, service, fintech, ed
                 startActivity(intent);
             }
         });
+
 
         lastLastYear.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
@@ -162,8 +160,6 @@ CardView lastYear, lastLastYear, lastLastLastYear, product, service, fintech, ed
                 }
 
                 drawerLayout.closeDrawer(GravityCompat.START);
-
-
                 return false;
             }
 

@@ -46,48 +46,11 @@
 
     </LinearLayout>
 
-    <LinearLayout
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_marginBottom="20dp">
-
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                >
-
-<ImageView
-    android:layout_width="300dp"
-    android:layout_height="match_parent"
-    android:src="@drawable/n"/>
-                <ImageView
-    android:layout_width="300dp"
-    android:layout_height="match_parent"
-    android:src="@drawable/n2"/>
-                <ImageView
-    android:layout_width="300dp"
-    android:layout_height="match_parent"
-    android:src="@drawable/n3"/> <ImageView
-    android:layout_width="300dp"
-    android:layout_height="match_parent"
-    android:src="@drawable/n4"/> <ImageView
-    android:layout_width="300dp"
-    android:layout_height="match_parent"
-    android:src="@drawable/n5"/> <ImageView
-    android:layout_width="300dp"
-    android:layout_height="match_parent"
-    android:src="@drawable/nucleussoftwarenoidacampus"/>
-
-            </LinearLayout>
-
-        </HorizontalScrollView>
-
-    </LinearLayout>
+        android:id="@+id/imageRecycler"
+        />
 
 
 
@@ -249,8 +212,20 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rounds"
             android:layout_width="match_parent"
-            android:layout_height="130dp" />
+            android:layout_height="100dp" />
 
+
+        <TextView
+            android:id="@+id/eligibility"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:paddingLeft="25dp"
+            android:text="Eligibility Criteria ?"
+            android:textSize="16sp"
+            android:textStyle="bold|normal"
+            android:textColor="@color/teal_700"
+            />
 
     </LinearLayout>
+
 </androidx.cardview.widget.CardView>
