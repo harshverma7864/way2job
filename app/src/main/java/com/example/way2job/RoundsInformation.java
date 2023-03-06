@@ -15,6 +15,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.way2job.adapter.RoundInfoAdapter;
+import com.example.way2job.constants.GetUrls;
 import com.example.way2job.models.RoundInfo;
 import com.example.way2job.models.Rounds;
 
@@ -55,7 +56,7 @@ public class RoundsInformation extends AppCompatActivity {
 
         RequestQueue queue = Volley.newRequestQueue(this);
         roundInfos.clear();
-        final String url = "https://way2job.shohos.com/way2jobApis/getRoundDetails.php?roundId=" + roundId;
+        final String url = GetUrls.ROUNDURL + roundId;
 
         JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {

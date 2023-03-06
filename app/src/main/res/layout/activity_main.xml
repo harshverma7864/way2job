@@ -27,6 +27,9 @@
         />
 
 
+
+
+
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -234,6 +237,7 @@
                         android:src="@drawable/education"/>
 
                     <TextView
+                        android:id="@+id/profile"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_margin="1dp"

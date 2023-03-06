@@ -18,6 +18,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.way2job.adapter.CardAdapter;
 import com.example.way2job.adapter.ImageAdapter;
 import com.example.way2job.adapter.RoundAdapter;
+import com.example.way2job.constants.GetUrls;
 import com.example.way2job.models.Information;
 import com.example.way2job.models.Rounds;
 
@@ -98,8 +99,8 @@ public class CardsInfo extends AppCompatActivity {
     public void getRoundsInfo(int companyid) {
 
         RequestQueue queue = Volley.newRequestQueue(this);
-roundInfoList.clear();
-        final String url = "https://way2job.shohos.com/way2jobApis/getRoundsInfo.php?companyId=" + companyid;
+        roundInfoList.clear();
+        final String url = GetUrls.ROUNDSINFOURL + companyid;
 
         JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
@@ -140,7 +141,7 @@ roundInfoList.clear();
 
         RequestQueue queue = Volley.newRequestQueue(this);
         images.clear();
-        final String url = "https://way2job.shohos.com/way2jobApis/getAllImages.php?cardId=card"+companyid;
+        final String url = GetUrls.CARDSINFOURL +companyid;
 
         JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {

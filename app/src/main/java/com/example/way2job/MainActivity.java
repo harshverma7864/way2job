@@ -57,6 +57,8 @@ CardView lastYear, lastLastYear, lastLastLastYear, product, service, fintech, ed
         fintech = findViewById(R.id.fintech);
         edtech = findViewById(R.id.edtech);
 
+        navigationView.setNavigationItemSelectedListener((NavigationView.OnNavigationItemSelectedListener) this);
+
         lastYear.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
@@ -128,7 +130,6 @@ CardView lastYear, lastLastYear, lastLastLastYear, product, service, fintech, ed
         });
 
 
-
         edtech.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -139,17 +140,15 @@ CardView lastYear, lastLastYear, lastLastLastYear, product, service, fintech, ed
             }
         });
 
-
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
                 int id = item.getItemId();
-
                 if (id==R.id.home){
                     loadFragment(new HomeFragment());
                 }
                 else if(id==R.id.profile){
+                    Toast.makeText(MainActivity.this, "Hello", Toast.LENGTH_SHORT).show();
                     loadFragment(new ProfileFragment());
                 }
                 else if(id==R.id.settings){

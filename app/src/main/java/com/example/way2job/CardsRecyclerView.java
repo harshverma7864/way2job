@@ -16,6 +16,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.way2job.adapter.CardAdapter;
+import com.example.way2job.constants.GetUrls;
 import com.example.way2job.models.Information;
 import com.example.way2job.models.Rounds;
 
@@ -56,7 +57,7 @@ public class CardsRecyclerView extends AppCompatActivity {
     public void getCompanyInfo(String basis , String type) {
         RequestQueue queue = Volley.newRequestQueue(this);
 
-        final String url = "https://way2job.shohos.com/way2jobApis/getAllCompanies.php?basis="+basis+"&type="+type;
+        final String url = GetUrls.ALLCOMPANIESURL +basis+"&type="+type;
         informationList.clear();
         JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, url, null,
 

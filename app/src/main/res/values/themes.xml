@@ -3,7 +3,7 @@
     <style name="Theme.Way2job" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">#07308F</item>
-        <item name="colorPrimaryVariant">#041F60</item>
+        <item name="colorPrimaryVariant">#026564</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
