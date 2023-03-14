@@ -1,4 +1,4 @@
-package com.example.way2job.adapter;
+package com.example.pdeck.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -8,9 +8,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.way2job.R;
-import com.example.way2job.RoundsInformation;
-import com.example.way2job.models.Rounds;
+import com.example.pdeck.R;
+import com.example.pdeck.RoundsInformation;
+import com.example.pdeck.models.Rounds;
 import java.util.List;
 
 public class RoundAdapter extends RecyclerView.Adapter<RoundAdapter.ViewHolder> {

@@ -1,4 +1,4 @@
-package com.example.way2job;
+package com.example.pdeck;
 
 import org.junit.Test;
 

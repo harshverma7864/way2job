@@ -1,4 +1,4 @@
-package com.example.way2job.models;
+package com.example.pdeck.models;
 
 public class Information {
     private int id;

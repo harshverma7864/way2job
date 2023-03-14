@@ -1,4 +1,4 @@
-package com.example.way2job;
+package com.example.pdeck;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -14,10 +14,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.way2job.adapter.RoundInfoAdapter;
-import com.example.way2job.constants.GetUrls;
-import com.example.way2job.models.RoundInfo;
-import com.example.way2job.models.Rounds;
+import com.example.pdeck.adapter.RoundInfoAdapter;
+import com.example.pdeck.constants.GetUrls;
+import com.example.pdeck.models.RoundInfo;
 
 import org.json.JSONArray;
 import org.json.JSONException;

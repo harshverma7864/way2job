@@ -1,4 +1,4 @@
-package com.example.way2job;
+package com.example.pdeck;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -17,13 +17,11 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.example.way2job.fragments.HomeFragment;
-import com.example.way2job.fragments.ProfileFragment;
-import com.example.way2job.fragments.SettingsFragment;
+import com.example.pdeck.fragments.HomeFragment;
+import com.example.pdeck.fragments.ProfileFragment;
+import com.example.pdeck.fragments.SettingsFragment;
 import com.google.android.material.navigation.NavigationView;
 
 import java.time.LocalDate;
@@ -57,7 +55,6 @@ CardView lastYear, lastLastYear, lastLastLastYear, product, service, fintech, ed
         fintech = findViewById(R.id.fintech);
         edtech = findViewById(R.id.edtech);
 
-        navigationView.setNavigationItemSelectedListener((NavigationView.OnNavigationItemSelectedListener) this);
 
         lastYear.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
@@ -133,7 +130,7 @@ CardView lastYear, lastLastYear, lastLastLastYear, product, service, fintech, ed
         edtech.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, CardsRecyclerView.class);
+                Intent intent = new Intent(MainActivity.this, Profile.class);
                 intent.putExtra("card", "2");
                 intent.putExtra("companyType", "edtech");
                 startActivity(intent);

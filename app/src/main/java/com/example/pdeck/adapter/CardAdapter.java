@@ -1,4 +1,4 @@
-package com.example.way2job.adapter;
+package com.example.pdeck.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,11 +13,9 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.way2job.CardsInfo;
-import com.example.way2job.R;
-import com.example.way2job.models.Information;
-
-import org.w3c.dom.Text;
+import com.example.pdeck.CardsInfo;
+import com.example.pdeck.R;
+import com.example.pdeck.models.Information;
 
 import java.util.List;
 

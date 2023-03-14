@@ -1,4 +1,4 @@
-package com.example.way2job;
+package com.example.pdeck;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -15,19 +15,16 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.way2job.adapter.CardAdapter;
-import com.example.way2job.adapter.ImageAdapter;
-import com.example.way2job.adapter.RoundAdapter;
-import com.example.way2job.constants.GetUrls;
-import com.example.way2job.models.Information;
-import com.example.way2job.models.Rounds;
+import com.example.pdeck.adapter.ImageAdapter;
+import com.example.pdeck.adapter.RoundAdapter;
+import com.example.pdeck.constants.GetUrls;
+import com.example.pdeck.models.Rounds;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class CardsInfo extends AppCompatActivity {

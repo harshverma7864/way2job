@@ -1,13 +1,11 @@
-package com.example.way2job;
+package com.example.pdeck;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -17,8 +15,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.way2job.constants.GetUrls;
-import com.example.way2job.models.User;
+import com.example.pdeck.constants.GetUrls;
+import com.example.pdeck.models.User;
 
 import org.json.JSONArray;
 import org.json.JSONException;

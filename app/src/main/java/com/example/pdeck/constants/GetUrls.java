@@ -1,4 +1,4 @@
-package com.example.way2job.constants;
+package com.example.pdeck.constants;
 
 public class GetUrls {
     public static final String CARDSINFOURL = "https://way2job.shohos.com/way2jobApis/getAllImages.php?cardId=card";

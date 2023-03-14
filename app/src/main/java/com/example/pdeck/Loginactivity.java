@@ -1,10 +1,10 @@
-package com.example.way2job;
+package com.example.pdeck;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,9 +17,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.way2job.constants.GetUrls;
-import com.example.way2job.models.Rounds;
-import com.example.way2job.models.User;
+import com.example.pdeck.constants.GetUrls;
+import com.example.pdeck.models.User;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -41,19 +40,27 @@ public class Loginactivity extends AppCompatActivity{
         pass = findViewById(R.id.password);
         forgot = findViewById(R.id.forgot);
 
-        loginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (user.getText().toString().equals("")) {
-                    Toast.makeText(Loginactivity.this, "Please Enter Username", Toast.LENGTH_SHORT).show();
-                }else if(pass.getText().toString().equals("")){
-                    Toast.makeText(Loginactivity.this, "Please Enter Password", Toast.LENGTH_SHORT).show();
+
+        SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_PRIVATE);
+
+        if(!sh.getString("name", "").equals("")){
+            Intent intent = new Intent(Loginactivity.this, MainActivity.class);
+            startActivity(intent);
+        }
+        else{
+            loginBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (user.getText().toString().equals("")) {
+                        Toast.makeText(Loginactivity.this, "Please Enter Username", Toast.LENGTH_SHORT).show();
+                    } else if (pass.getText().toString().equals("")) {
+                        Toast.makeText(Loginactivity.this, "Please Enter Password", Toast.LENGTH_SHORT).show();
+                    } else {
+                        getUserInfo(user.getText().toString());
+                    }
                 }
-                else{
-                    getUserInfo(user.getText().toString());
-                }
-            }
-        });
+            });
+        }
 
         forgot.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,6 +102,13 @@ public class Loginactivity extends AppCompatActivity{
                                 if (userGlobal.getPassword().equals(pass.getText().toString())) {
                                     Toast.makeText(Loginactivity.this, "Login SuccessFull", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(Loginactivity.this, MainActivity.class);
+                                    SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref",MODE_PRIVATE);
+                                    SharedPreferences.Editor myEdit = sharedPreferences.edit();
+                                    myEdit.putString("email", userGlobal.getEmail());
+                                    myEdit.putString("name", userGlobal.getName());
+                                    myEdit.putString("roll", userGlobal.getRollNo());
+                                    myEdit.putString("college", userGlobal.getCollegeName());
+                                    myEdit.commit();
                                     startActivity(intent);
                                 }
 

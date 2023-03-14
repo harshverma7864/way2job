@@ -1,4 +1,4 @@
-package com.example.way2job.adapter;
+package com.example.pdeck.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -9,8 +9,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.way2job.R;
-import com.example.way2job.models.RoundInfo;
+import com.example.pdeck.R;
+import com.example.pdeck.models.RoundInfo;
 import java.util.List;
 
 public class RoundInfoAdapter extends RecyclerView.Adapter<RoundInfoAdapter.ViewHolder> {
